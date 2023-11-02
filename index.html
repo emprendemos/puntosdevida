@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora</title>
+    <style>
+        .calculator {
+            width: 80vw;
+            margin: 0 auto;
+            text-align: center;
+        }
+        #display1, #display2 {
+            width: 100%;
+            margin-bottom: 10px;
+            font-size: 4vw;
+            text-align: right;
+        }
+        .row {
+            display: flex;
+            justify-content: space-between;
+        }
+        .calculator .row input[type="button"] {
+            width: 20vw;
+            height: 20vw;
+            font-size: 5vw;
+            margin: 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .calculator .row input[type="button"].red {
+            background-color: red;
+            color: white;
+        }
+        .calculator .row input[type="button"].blue {
+            background-color: blue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display1" readonly><br>
+        <div class="row">
+            <input type="button" value="7" class="red" onclick="appendToDisplay('7', 'display1')">
+            <input type="button" value="8" class="red" onclick="appendToDisplay('8', 'display1')">
+            <input type="button" value="9" class="red" onclick="appendToDisplay('9', 'display1')">
+            <input type="button" value="/" class="red" onclick="appendToDisplay('/', 'display1')">
+        </div>
+        <div class="row">
+            <input type="button" value="4" class="red" onclick="appendToDisplay('4', 'display1')">
+            <input type="button" value="5" class="red" onclick="appendToDisplay('5', 'display1')">
+            <input type="button" value="6" class="red" onclick="appendToDisplay('6', 'display1')">
+            <input type="button" value="*" class="red" onclick="appendToDisplay('*', 'display1')">
+        </div>
+        <div class="row">
+            <input type="button" value="1" class="red" onclick="appendToDisplay('1', 'display1')">
+            <input type="button" value="2" class="red" onclick="appendToDisplay('2', 'display1')">
+            <input type="button" value="3" class="red" onclick="appendToDisplay('3', 'display1')">
+            <input type="button" value="-" class="red" onclick="appendToDisplay('-', 'display1')">
+        </div>
+        <div class="row">
+            <input type="button" value="C" class="red" onclick="clearDisplay('display1')">
+            <input type="button" value="0" class="red" onclick="appendToDisplay('0', 'display1')">
+            <input type="button" value="=" class="red" onclick="calculate('display1')">
+            <input type="button" value="+" class="red" onclick="appendToDisplay('+', 'display1')">
+        </div>
+    </div>
+
+    <div class="calculator">
+        <input type="text" id="display2" readonly><br>
+        <div class="row">
+            <input type="button" value="7" class="blue" onclick="appendToDisplay('7', 'display2')">
+            <input type="button" value="8" class="blue" onclick="appendToDisplay('8', 'display2')">
+            <input type="button" value="9" class="blue" onclick="appendToDisplay('9', 'display2')">
+            <input type="button" value="/" class="blue" onclick="appendToDisplay('/', 'display2')">
+        </div>
+        <div class="row">
+            <input type="button" value="4" class="blue" onclick="appendToDisplay('4', 'display2')">
+            <input type="button" value="5" class="blue" onclick="appendToDisplay('5', 'display2')">
+            <input type="button" value="6" class="blue" onclick="appendToDisplay('6', 'display2')">
+            <input type="button" value="*" class="blue" onclick="appendToDisplay('*', 'display2')">
+        </div>
+        <div class="row">
+            <input type="button" value="1" class="blue" onclick="appendToDisplay('1', 'display2')">
+            <input type="button" value="2" class="blue" onclick="appendToDisplay('2', 'display2')">
+            <input type="button" value="3" class="blue" onclick="appendToDisplay('3', 'display2')">
+            <input type="button" value="-" class="blue" onclick="appendToDisplay('-', 'display2')">
+        </div>
+        <div class="row">
+            <input type="button" value="C" class="blue" onclick="clearDisplay('display2')">
+            <input type="button" value="0" class="blue" onclick="appendToDisplay('0', 'display2')">
+            <input type="button" value="=" class="blue" onclick="calculate('display2')">
+            <input type="button" value="+" class="blue" onclick="appendToDisplay('+', 'display2')">
+        </div>
+    </div>
+
+    <script>
+        function appendToDisplay(value, displayId) {
+            document.getElementById(displayId).value += value;
+        }
+
+        function calculate(displayId) {
+            try {
+                const expression = document.getElementById(displayId).value;
+                const result = eval(expression);
+                document.getElementById(displayId).value = result;
+            } catch (error) {
+                document.getElementById(displayId).value = 'Error';
+            }
+        }
+
+        function clearDisplay(displayId) {
+            document.getElementById(displayId).value = '';
+        }
+    </script>
+</body>
+</html>
